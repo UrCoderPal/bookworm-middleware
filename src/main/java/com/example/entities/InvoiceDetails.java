@@ -1,6 +1,4 @@
 package com.example.entities;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,23 +7,24 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class InvoiceDetail {
+public class InvoiceDetails {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long invDtlId;
-
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "invoiceId")
-	private InvoiceTable invoice;
-
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "productId")
-	private ProductMaster product;
-
-	private int quantity;
-	private double basePrice;
-	private String tranType;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long invDtlId;
+    
+    @ManyToOne
+    @JoinColumn(name = "invoiceId")
+    private InvoiceTable invoice;
+    
+    @ManyToOne
+    @JoinColumn(name = "productId")
+    private ProductMaster product;
+    
+    private int quantity;
+    private double basePrice;
+    private String tranType;
+    private int rentNoOfDays;
 	public Long getInvDtlId() {
 		return invDtlId;
 	}
@@ -68,7 +67,7 @@ public class InvoiceDetail {
 	public void setRentNoOfDays(int rentNoOfDays) {
 		this.rentNoOfDays = rentNoOfDays;
 	}
-	private int rentNoOfDays;
-
-	// Getter and setter methods
+    
+    // Getter and setter methods
+    
 }
