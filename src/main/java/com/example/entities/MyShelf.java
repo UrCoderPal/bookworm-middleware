@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class MyShelf {
@@ -16,11 +17,11 @@ public class MyShelf {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long shelfId;
     
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "customerId")
     private CustomerMaster customerId;
    
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "productId")
     private ProductMaster product;
     
