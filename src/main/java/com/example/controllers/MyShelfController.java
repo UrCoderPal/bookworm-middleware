@@ -1,5 +1,6 @@
 package com.example.controllers;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import com.example.entities.ProductMaster;
 import com.example.services.MyShelfService;
 
 @RestController
-@RequestMapping("/myshelf")
+@RequestMapping("/api/myshelf")
 public class MyShelfController {
 
     @Autowired

@@ -11,12 +11,14 @@ public interface IProductMasterService {
 
 	public List<ProductMaster> getAllProducts();
 	
-	public Optional<ProductMaster> getProduct(long id) throws ProductNotExistException;
+	public ProductMaster getProduct(long id) ;
 
 	public Optional<ProductMaster> deleteById(long id) throws ProductNotExistException;
 
 	public Optional<ProductMaster> updateById(long id, ProductMaster obj);
 	
 	//public void updateById(ProductMaster product,long id);
+	
+	List<ProductMaster> getByType(long id);
 
 }
