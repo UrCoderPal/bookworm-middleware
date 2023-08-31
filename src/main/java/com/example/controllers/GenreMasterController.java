@@ -60,4 +60,5 @@ public class GenreMasterController {
     public void addGenre(@RequestBody GenreMaster genre) {
         genreServices.addGenreMaster(genre);
     }
+    
 }

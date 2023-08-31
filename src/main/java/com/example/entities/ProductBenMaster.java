@@ -1,12 +1,12 @@
 package com.example.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -16,9 +16,8 @@ public class ProductBenMaster {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long prodBenId;
     
-    @ManyToOne
-    @JoinColumn(name = "prodBenBenId")
-    private BeneficiaryMaster beneficiary;
+    @Column(name = "benId")
+    private Long benId;
     
     @OneToOne
     @JoinColumn(name = "prodBenProductId")
@@ -34,12 +33,12 @@ public class ProductBenMaster {
 		this.prodBenId = prodBenId;
 	}
 
-	public BeneficiaryMaster getBeneficiary() {
-		return beneficiary;
+	public Long getBenId() {
+		return benId;
 	}
 
-	public void setBeneficiary(BeneficiaryMaster beneficiary) {
-		this.beneficiary = beneficiary;
+	public void setBenId(Long benId) {
+		this.benId = benId;
 	}
 
 	public ProductMaster getProduct() {

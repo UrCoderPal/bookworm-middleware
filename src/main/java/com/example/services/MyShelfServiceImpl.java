@@ -23,8 +23,8 @@ public class MyShelfServiceImpl implements MyShelfService {
 	}
 
 	@Override
-	public List<Object []> getByCustomerId(Long customerId) {
-		return repository.getByCustomerId(customerId);
+	public List<ProductMaster> getByCustomerId(Long customerId) {
+		return null;
 	}
 
 }

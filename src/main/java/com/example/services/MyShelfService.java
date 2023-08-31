@@ -6,8 +6,8 @@ import com.example.entities.MyShelf;
 import com.example.entities.ProductMaster;
 
 public interface MyShelfService {
-    MyShelf getById(Long shelfId);
+	MyShelf getById(Long shelfId);
 
-    List<Object[]> getByCustomerId(Long customerId);
+	List<ProductMaster> getByCustomerId(Long customerId);
 
 }
