@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import com.example.entities.ProductMaster;
 import com.example.services.MyShelfService;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/myshelf")
 public class MyShelfController {
 
@@ -48,6 +50,7 @@ public class MyShelfController {
 //			list.add(obj);
 //		}
 //		return list;
+		System.out.println("myshelf cntrlr");
 		
 		return (ResponseEntity<List<ProductMaster>>) myShelfService.getByCustomerId(customerId);
 
