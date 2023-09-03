@@ -14,60 +14,138 @@ import jakarta.persistence.OneToOne;
 
 @Entity
 public class Cart {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long cartId;
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private ProductMaster product;
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private CustomerMaster customer;
-	private String type;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private long cartId;
+@OneToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
+private ProductMaster product;
+@OneToOne(fetch = FetchType.EAGER, cascade =  CascadeType.ALL)
+private CustomerMaster customer;
+private String type ;
 
-	private int quantity;
+private int quantity;
 
-	public int getQuantity() {
-		return quantity;
-	}
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
 
-	public long getCartId() {
-		return cartId;
-	}
 
-	public void setCartId(long cartId) {
-		this.cartId = cartId;
-	}
 
-	public ProductMaster getProduct() {
-		return product;
-	}
 
-	public void setProduct(ProductMaster product) {
-		this.product = product;
-	}
 
-	public CustomerMaster getCustomer() {
-		return customer;
-	}
+public int getQuantity() {
+	return quantity;
+}
 
-	public void setCustomer(CustomerMaster customer) {
-		this.customer = customer;
-	}
 
-	public String getType() {
-		return type;
-	}
 
-	public void setType(String type) {
-		this.type = type;
-	}
 
-	@Override
-	public String toString() {
-		return "Cart [cartId=" + cartId + ", product=" + product + ", customer=" + customer + ", type=" + type + "]";
-	}
+
+
+
+public void setQuantity(int quantity) {
+	this.quantity = quantity;
+}
+
+
+
+
+
+
+
+public long getCartId() {
+	return cartId;
+}
+
+
+
+
+
+
+
+public void setCartId(long cartId) {
+	this.cartId = cartId;
+}
+
+
+
+
+
+
+
+public ProductMaster getProduct() {
+	return product;
+}
+
+
+
+
+
+
+
+public void setProduct(ProductMaster product) {
+	this.product = product;
+}
+
+
+
+
+
+
+
+public CustomerMaster getCustomer() {
+	return customer;
+}
+
+
+
+
+
+
+
+public void setCustomer(CustomerMaster customer) {
+	this.customer = customer;
+}
+
+
+
+
+
+
+
+public String getType() {
+	return type;
+}
+
+
+
+
+
+
+
+public void setType(String type) {
+	this.type = type;
+}
+
+
+
+
+
+
+
+@Override
+public String toString() {
+	return "Cart [cartId=" + cartId + ", product=" + product + ", customer=" + customer + ", type=" + type + "]";
+}
+
+
+
+
 
 }
+
+
+
+
+
+
+
+

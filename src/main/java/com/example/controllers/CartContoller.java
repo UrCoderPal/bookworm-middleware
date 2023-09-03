@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,8 +38,10 @@ public class CartContoller {
 	public ResponseEntity<String> addToCart(@RequestBody CartDto cart) {
 		System.out.println("Cart " + cart);
 		try {
+			
 			CustomerMaster user = custService.getCustomerById(cart.getCustomerId());
 			ProductMaster product = prodService.getProduct(cart.getProductId());
+			
 			Cart cartItem = new Cart();
 			cartItem.setCustomer(user);
 			cartItem.setProduct(product);
@@ -60,6 +63,29 @@ public class CartContoller {
 		ArrayList<CartSendDto> list = new ArrayList<>();
 
 		ArrayList<Cart> cartList = cartService.getAllCartList();
+
+		for (Cart cartItem : cartList) {
+			CartSendDto obj = new CartSendDto();
+			obj.setId(cartItem.getCartId());
+			obj.setPrice(cartItem.getProduct().getProductSpCost());
+			obj.setProductName(cartItem.getProduct().getProductName());
+			obj.setQuantity(cartItem.getQuantity());
+			obj.setTotalPrice(cartItem.getQuantity() * cartItem.getProduct().getProductSpCost());
+			obj.setType(cartItem.getType());
+
+			list.add(obj);
+		}
+
+		return list;
+
+	}
+
+	@GetMapping("/getbycustomer/{id}")
+	public ArrayList<CartSendDto> getItemsByCustomerId(@PathVariable long id) {
+
+		ArrayList<CartSendDto> list = new ArrayList<>();
+
+		ArrayList<Cart> cartList = (ArrayList<Cart>) cartService.getCartByCustomerId(id);
 
 		for (Cart cartItem : cartList) {
 			CartSendDto obj = new CartSendDto();

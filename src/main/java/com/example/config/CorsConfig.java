@@ -13,6 +13,7 @@ public class CorsConfig {
 		
 		CorsConfiguration configuration = new CorsConfiguration();
         configuration.addAllowedOrigin("http://localhost:3000"); // Change this to your frontend URL
+        configuration.addAllowedOrigin("http://localhost:3001");
         configuration.addAllowedMethod("GET");
         configuration.addAllowedMethod("POST");
         configuration.addAllowedMethod("PUT");

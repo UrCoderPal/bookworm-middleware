@@ -1,17 +1,15 @@
 package com.example.entities;
 
 import java.sql.Date;
-import java.util.List;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class InvoiceTable {
@@ -20,45 +18,12 @@ public class InvoiceTable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long invoiceId;
     
-    public List<RoyaltyCalculation> getRoyalCal() {
-		return royalCal;
-	}
-
-	public void setRoyalCal(List<RoyaltyCalculation> royalCal) {
-		this.royalCal = royalCal;
-	}
-
-	private Date invoiceDate;
+    private Date invoiceDate;
     
-    @OneToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name="invoiceId")
-    private List<RoyaltyCalculation> royalCal;
-  
-    @OneToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name="invoiceId")
-    private List<InvoiceDetails> invoiceDetails;
-    
-    @Column(name="customerId")
-    private Long customerId;
-    
-    public Long getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(Long customerId) {
-		this.customerId = customerId;
-	}
-
-	public List<InvoiceDetails> getInvoiceDetails() {
-		return invoiceDetails;
-	}
-
-	public void setInvoiceDetails(List<InvoiceDetails> invoiceDetails) {
-		this.invoiceDetails = invoiceDetails;
-	}
-
-	private double invoiceAmount;
-
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "custId")
+    private CustomerMaster customerId;
+    private double invoiceAmount;
 
 	public Long getInvoiceId() {
 		return invoiceId;
@@ -66,6 +31,14 @@ public class InvoiceTable {
 
 	public void setInvoiceId(Long invoiceId) {
 		this.invoiceId = invoiceId;
+	}
+
+	public CustomerMaster getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(CustomerMaster customerId) {
+		this.customerId = customerId;
 	}
 
 	public Date getInvoiceDate() {

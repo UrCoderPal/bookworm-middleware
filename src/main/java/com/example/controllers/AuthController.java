@@ -1,5 +1,8 @@
 package com.example.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +23,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.entities.JwtRequest;
 import com.example.entities.JwtResponse;
 import com.example.security.JwtHelper;
+import com.example.services.CustomerService;
 
-@CrossOrigin("*")
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/auth")
 public class AuthController {
 
@@ -32,7 +36,9 @@ public class AuthController {
     @Autowired
     private AuthenticationManager manager;
 
-
+    @Autowired
+    private CustomerService customerService;
+    
     @Autowired
     private JwtHelper helper;
 
@@ -40,7 +46,7 @@ public class AuthController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<JwtResponse> login(@RequestBody JwtRequest request) {
+    public ResponseEntity<Map> login(@RequestBody JwtRequest request) {
 
         this.doAuthenticate(request.getEmail(), request.getPassword());
 
@@ -51,7 +57,10 @@ public class AuthController {
         JwtResponse response = JwtResponse.builder()
                 .jwtToken(token)
                 .username(userDetails.getUsername()).build();
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        Map<String,Object> arr = new HashMap<>();
+        arr.put("data",response);
+        arr.put("userId", 1);
+        return new ResponseEntity<>(arr, HttpStatus.OK);
     }
 
     private void doAuthenticate(String email, String password) {
@@ -72,4 +81,5 @@ public class AuthController {
         return "Credentials Invalid !!";
     }
 
+    
 }

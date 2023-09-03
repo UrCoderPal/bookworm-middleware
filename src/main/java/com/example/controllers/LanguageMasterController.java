@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,31 +21,26 @@ import com.example.services.LanguageMasterService;
 public class LanguageMasterController {
 	@Autowired
 	private LanguageMasterService iservices;
-
 	@PutMapping(value = "update/{id}")
-	public void updatelanguage(@PathVariable int id, @RequestBody LanguageMaster language) {
-		iservices.updatelanguage(id, language);
+	public void updatelanguage(@PathVariable int id,@RequestBody LanguageMaster language) {
+	       iservices.updatelanguage(id, language);
 	}
-
-	@GetMapping(value = "/getAll")
-	public List<LanguageMaster> getalllanguage() {
-		return iservices.getalllanguage();
-
+	 @GetMapping(value = "/getAll")
+	public List<LanguageMaster> getalllanguage()
+	{
+	   return iservices.getalllanguage();
+		
 	}
-
-	@GetMapping(value = "/getById/{id}")
-	public Optional<LanguageMaster> getlanguagebytypeid(@PathVariable Long id) {
+	 @GetMapping(value="/getById/{id}")
+	public Optional<LanguageMaster> getlanguagebytypeid(@PathVariable Long id)
+	{
 		return iservices.getlanguagebytypeid(id);
 	}
-
-	@GetMapping(value = "/getByType/{type}")
-	public Optional<LanguageMaster> getlanguagebyitsType(@PathVariable String type) {
+	 @GetMapping(value = "/getByType/{type}")
+	public Optional<LanguageMaster> getlanguagebyitsType(@PathVariable String type)
+	{
 		return iservices.getlanguagebyitsType(type);
 	}
-
-	@PostMapping(value = "/addlanguage")
-	public void addLanguage(@RequestBody LanguageMaster lang) {
-		iservices.addLanguage(lang);
-	}
+	
 
 }
