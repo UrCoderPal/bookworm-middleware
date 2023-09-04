@@ -21,37 +21,5 @@ import com.example.services.RoyaltyCalculationService;
 @RequestMapping("/api/royalty")
 public class RoyaltyCalculationController {
     
-    @Autowired
-    private RoyaltyCalculationService royaltyCalculationService;
-
-    @PostMapping("/add")
-    public ResponseEntity<String> addRoyalty(@RequestBody RoyaltyCalculation royalty) {
-    	System.out.println(royalty);
-        royaltyCalculationService.addRoyalty(royalty);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Royalty added successfully");
-    }
-
-    @GetMapping("/beneficiary/{benId}")
-    public ResponseEntity<List<RoyaltyCalculation>> getRoyaltyByBeneficiary(@PathVariable long benId) {
-        List<RoyaltyCalculation> royalties = royaltyCalculationService.getByBeneficiary(benId);
-        return ResponseEntity.ok(royalties);
-    }
-
-    @GetMapping("/product/{productId}")
-    public ResponseEntity<List<RoyaltyCalculation>> getRoyaltyByProduct(@PathVariable int productId) {
-        List<RoyaltyCalculation> royalties = royaltyCalculationService.getByProduct(productId);
-        return ResponseEntity.ok(royalties);
-    }
-
-    @GetMapping("/invoice/{invoiceId}")
-    public ResponseEntity<List<RoyaltyCalculation>> getRoyaltyByInvoice(@PathVariable int invoiceId) {
-        List<RoyaltyCalculation> royalties = royaltyCalculationService.getByInvoice(invoiceId);
-        return ResponseEntity.ok(royalties);
-    }
-    
-    @GetMapping("/getAll")
-    public ResponseEntity<List<RoyaltyCalculation>> getRoyalties() {
-    	List<RoyaltyCalculation> royalties = royaltyCalculationService.getRoyalties();
-    	return ResponseEntity.ok(royalties);
-    }
+   
 }

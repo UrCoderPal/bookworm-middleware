@@ -18,34 +18,10 @@ public class RoyaltyCalculationServiceImpl implements RoyaltyCalculationService{
 	RoyaltyCalculationRepository repository;
 
 	@Override
-	public void addRoyalty(RoyaltyCalculation royalty) {
-		// TODO Auto-generated method stub
-		repository.save(royalty);
+	public void addRoyality(RoyaltyCalculation obj) {
+		repository.save(obj);
 	}
-
-	@Override
-	public List<RoyaltyCalculation> getByBeneficiary(long benId) {
-		// TODO Auto-generated method stub
-		return repository.getByBeneficiaryId(benId);
-	}
-
-	@Override
-	public List<RoyaltyCalculation> getByProduct(long productId) {
-		// TODO Auto-generated method stub
-		return repository.getByProductId(productId);
-	}
-
-	@Override
-	public List<RoyaltyCalculation> getByInvoice(long invoiceId) {
-		// TODO Auto-generated method stub
-		return repository.getByInvoiceId(invoiceId);
-	}
-
-	@Override
-	public List<RoyaltyCalculation> getRoyalties() {
-		// TODO Auto-generated method stub
-		return repository.findAll();
-	}
+	
 	
 
 }
